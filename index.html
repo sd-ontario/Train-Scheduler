@@ -16,7 +16,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 
@@ -27,6 +27,7 @@
         <h1 style="text-align: center">Train Scheduler</h1>
     </div>
     </div>
+    <div id="currentTime"></div>
 
     <div class="container">
     <div class="row">
@@ -75,14 +76,14 @@
                       <input class="form-control" id="destinationInput" type="text">
                     </div>
                     <div class="form-group row">
-                      <label for="time">First Train Time (Military time, hh:mm)</label>
+                      <label for="text">First Train Time (hh:mm - military time)</label>
                       <input class="form-control" id="timeInput"  type="text">
                     </div>
                     <div class="form-group row">
                       <label for="frequency">Frequency</label>
                       <input class="form-control" id="frequencyInput" type="text">
                     </div>
-                    <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
+                    <button class="btn btn-primary float-left" id="addTrainBtn">Submit</button>
                   </form>
                 </div>
               </div>
@@ -90,55 +91,6 @@
           </div>
         </div>
       
-    <script>
-
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyBMNLox52dXaPA1BZbnI6dOusvEehQ7HLM",
-            authDomain: "train-scheduler-b1a8e.firebaseapp.com",
-            databaseURL: "https://train-scheduler-b1a8e.firebaseio.com",
-            projectId: "train-scheduler-b1a8e",
-            storageBucket: "train-scheduler-b1a8e.appspot.com",
-            messagingSenderId: "675149744582"
-        };
-        firebase.initializeApp(config);
-
-        var database = firebase.database();
-
-        $("#add-train-btn").on('click', function(){
-
-        event.preventDefault();
-
-        var trainName = $("#trainNameInput").val().trim();
-        var destination = $("#destinationInput").val().trim();
-        var time = $("#timeInput").val().trim();
-        var frequency = $("#frequencyInput").val().trim();
-
-        var newTrain = {
-            name: trainName,
-            destination: destination,
-            time: time,
-            frequency: frequency
-        };
-
-        database.ref().push(newTrain);
-        
-        });
-
-    
-    
-    
-    </script>
-      
-
-
-
-    
-    
-
-
-
-
-    <script src="assets/app.js"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>
